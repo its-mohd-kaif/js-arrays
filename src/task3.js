@@ -1,74 +1,92 @@
-function sorting() {
-    var data =[
+var data = [
+  {
+    Company: "Samsung",
+    Model: "Galaxy",
+    Memory: 64,
+    Price: 15000,
+  },
+  {
+    Company: "Nokia",
+    Model: "S730",
+    Memory: 128,
+    Price: 22000,
+  },
+  {
+    Company: "Xiaomi",
+    Model: "Note",
+    Memory: 32,
+    Price: 12000,
+  },
+  {
+    Company: "Motorala",
+    Model: "G10",
+    Memory: 32,
+    Price: 15000,
+  },
+  {
+    Company: "Apple",
+    Model: "S12",
+    Memory: 64,
+    Price: 25000,
+  },
+];
 
-     {
-        company: "samsung",
-        model: "galaxy",
-        memory: 64,
-        price: 15000,
-      },
-       {
-        company: "nokia",
-        model: "S730",
-        memory: 128,
-        price: 22000,
-      },
-        {
-        company: "xiaomi",
-        model: "note",
-        memory: 32,
-        price: 12000,
-      },
-       {
-        company: "motoroala",
-        model: "g10",
-        memory: 32,
-        price: 15000,
-      },
-      {
-        company: "apple",
-        model: "s12",
-        memory: 64,
-        price: 25000,
-      },
-    ];
+function fun() {
+  var v1 = document.getElementById("tsort").value;
+  var v2 = document.getElementById("tdata").value;
+  if (v1 === "ascending" && v2 === "company") {
+    data.sort((a, b) =>
+      a.Company > b.Company ? 1 : b.Company > a.Company ? -1 : 0
+    );
 
-    // console.log(data.price);
-    // var pri=data.price;
-
-    var tsort=document.getElementById("sort").value;
-    var tdata=document.getElementById("sort-by").value;
-    // if(tsort=="Asceding"){
-    //     console.log(pri.sort(function(a, b){return a - b}));
-    // }
-
-    console.log(tsort);
-
-    if(tsort=="Ascending" && tdata=="Memory"){
-        data.sort(function(a, b){return a.memory - b.memory}
-        );
-    }else if(tsort=="Descending" && tdata=="Memory"){
-        data.sort(function(a, b){return b.memory - a.memory}
-        );
-    }
-    else if(tsort=="Ascending" && tdata=="Price"){
-        data.sort(function(a, b){return a.price - b.price}
-        );
-    }
-    else if(tsort=="Descending" && tdata=="Price"){
-        data.sort(function(a, b){return b.price - a.price}
-        );
-    }
-    else if(tsort=="Ascending" && tdata=="Model"){
-        data.sort(function(a, b){return a.model - b.model}
-        );
-    }
    
-
-
- 
-       
+  } else if (v1 === "descending" && v2 === "company") {
+    data.sort((a, b) =>
+      a.Company < b.Company ? 1 : b.Company < a.Company ? -1 : 0
+    );
+   
+  } else if (v1 === "ascending" && v2 === "model") {
+    data.sort((a, b) => (a.Model > b.Model ? 1 : b.Model > a.Model ? -1 : 0));
+   
+  } else if (v1 === "descending" && v2 === "model") {
+    data.sort((a, b) => (a.Model < b.Model ? 1 : b.Model < a.Model ? -1 : 0));
     
+  } else if (v1 === "ascending" && v2 === "memory") {
+    data.sort(function (a, b) {
+      return a.Memory - b.Memory;
+    });
+   
+  } else if (v1 === "descending" && v2 === "memory") {
+    data.sort(function (a, b) {
+      return b.Memory - a.Memory;
+    });
+ 
+  } else if (v1 === "ascending" && v2 === "price") {
+    data.sort(function (a, b) {
+      return a.Price - b.Price;
+    });
+   
+  } else if (v1 === "descending" && v2 === "price") {
+    data.sort(function (a, b) {
+      return b.Price - a.Price;
+    });
 
-    document.getElementById("output").innerHTML=JSON.stringify(data);
+  }
+
+  let table =
+    "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>Price(RS)</th></tr>";
+  data.forEach((val) => {
+    table +=
+      "<tr><td>" +
+      val.Company +
+      "<td>" +
+      val.Model +
+      "</td><td>" +
+      val.Memory +
+      "</td><td>" +
+      val.Price +
+      "</td></tr>";
+  });
+  table += "</table>";
+  document.getElementById("output").innerHTML = table;
 }
