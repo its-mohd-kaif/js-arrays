@@ -79,7 +79,7 @@ function fun() {
     table +=
       "<tr><td>" +
       val.Company +
-      "<td>" +
+      "</td><td>" +
       val.Model +
       "</td><td>" +
       val.Memory +
