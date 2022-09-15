@@ -6,7 +6,9 @@ var arr = [
   ["Motoroala", "G10", 32, 15000],
   ["Apple", "S12", 64, 25000],
 ];
-document.write("<h2>Task 1</h2>");
+document.write(
+  "<h2>Task 1</h2>  <h3>Create a javscript array to store the information of products given in the attachment and display them on a HTML page.</h3>"
+);
 document.write("<table border = 1px> ");
 document.write("<thead> <tr>");
 document.write(
