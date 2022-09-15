@@ -36,6 +36,7 @@ var a = [];
 function add() {
   var min = document.getElementById("min").value;
   var max = document.getElementById("max").value;
+  
   if (data1.price >= min && data1.price <= max) {
     a.push(data1);
   }

@@ -22,98 +22,115 @@ for (var a = 0; a < arr.length; a++) {
 document.write("</tr> </thead>");
 document.write("</table>");
 
-
 // ***Task (2) Add a dropdown and a textbox with search button ***
 
+var data = [
+  {
+    Company: "Samsung",
+    Model: "Galaxy",
+    Memory: 64,
+    Price: 15000,
+  },
+  {
+    Company: "Nokia",
+    Model: "S730",
+    Memory: 128,
+    Price: 22000,
+  },
+  {
+    Company: "Xiaomi",
+    Model: "Note",
+    Memory: 32,
+    Price: 12000,
+  },
+  {
+    Company: "Motoarala",
+    Model: "G10",
+    Memory: 32,
+    Price: 15000,
+  },
+  {
+    Company: "Apple",
+    Model: "S12",
+    Memory: 64,
+    Price: 25000,
+  },
+];
+
 function task2() {
-  var samsung = {
-    company: "samsung",
-    model: "galaxy",
-    memory: 64,
-    price: 15000,
-  };
-  var nokia = {
-    company: "nokia",
-    model: "S730",
-    memory: 128,
-    price: 22000,
-  };
-  var xiaomi = {
-    company: "xiaomi",
-    model: "note",
-    memory: 32,
-    price: 12000,
-  };
-  var motoroala = {
-    company: "motoroala",
-    model: "g10",
-    memory: 32,
-    price: 15000,
-  };
-  var apple = {
-    company: "apple",
-    model: "s12",
-    memory: 64,
-    price: 25000,
-  };
+  let table =
+    "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>Price(RS)</th></tr>";
+  let tdata = document.getElementById("tdata").value;
+  let tval = document.getElementById("tval").value;
 
-  var get = document.getElementById("txtValue").value;
-  get = get.toLowerCase();
+  tval = tval.toLowerCase();
 
-  var check;
-  if (get == "apple" || get == "s12") {
-    check =
-      "Company\b" +
-      apple.company +
-      "<br>Model\b\b" +
-      apple.model +
-      "<br>Memory\b\b" +
-      apple.memory +
-      "<br>Price\b\b" +
-      apple.price;
-  } else if (get == "samsung" || get == "galaxy") {
-    check =
-      "Company\b" +
-      samsung.company +
-      "<br>Model\b\b" +
-      samsung.model +
-      "<br>Memory\b\b" +
-      samsung.memory +
-      "<br>Price\b\b" +
-      samsung.price;
-  } else if (get == "nokia" || get == "s730") {
-    check =
-      "Company\b" +
-      nokia.company +
-      "<br>Model\b\b" +
-      nokia.model +
-      "<br>Memory\b\b" +
-      nokia.memory +
-      "<br>Price\b\b" +
-      nokia.price;
-  } else if (get == "xiaomi" || get == "note") {
-    check =
-      "Company\b" +
-      xiaomi.company +
-      "<br>Model\b\b" +
-      xiaomi.model +
-      "<br>Memory\b\b" +
-      xiaomi.memory +
-      "<br>Price\b\b" +
-      xiaomi.price;
-  } else if (get == "motoroala" || get == "g10") {
-    check =
-      "Company\b" +
-      motoroala.company +
-      "<br>Model\b\b" +
-      motoroala.model +
-      "<br>Memory\b\b" +
-      motoroala.memory +
-      "<br>Price\b\b" +
-      motoroala.price;
-  } else {
-    document.write("Please fill given data");
+  value = false;
+  data.forEach((e) => {
+    if (tdata == "Company") {
+      if (e.Company.toLowerCase() == tval) {
+        table +=
+          "<tr><td>" +
+          e.Company +
+          "<td>" +
+          e.Model +
+          "</td><td>" +
+          e.Memory +
+          "</td><td>" +
+          e.Price +
+          "</td><td>";
+        value = true;
+      }
+    } else if (tdata == "Model") {
+      if (e.Model.toLowerCase() == tval) {
+        table +=
+          "<tr><td>" +
+          e.Company +
+          "<td>" +
+          e.Model +
+          "</td><td>" +
+          e.Memory +
+          "</td><td>" +
+          e.Price +
+          "</td><td>";
+        value = true;
+      }
+    }
+    if (tdata == "Memory") {
+      if (e.Memory == tval) {
+        table +=
+          "<tr><td>" +
+          e.Company +
+          "<td>" +
+          e.Model +
+          "</td><td>" +
+          e.Memory +
+          "</td><td>" +
+          e.Price +
+          "</td><td>";
+        value = true;
+      }
+    }
+    if (tdata == "Price") {
+      if (e.Price == tval) {
+        table +=
+          "<tr><td>" +
+          e.Company +
+          "<td>" +
+          e.Model +
+          "</td><td>" +
+          e.Memory +
+          "</td><td>" +
+          e.Price +
+          "</td><td>";
+        value = true;
+      }
+    }
+  });
+  table += "</table>";
+  if (value == false) {
+    document.getElementById("output").innerHTML = "Please fill given value";
+    return;
   }
-
-  document.getElementById("output").innerHTML = check;
+  document.getElementById("output").innerHTML = table;
 }
